@@ -4,6 +4,9 @@
  */
 package schoolmanagementsystem;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author Naima Rahman
@@ -15,6 +18,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        Color customBlue = new Color(51, 0, 204);
+        this.getRootPane().setBorder(BorderFactory.createLineBorder(customBlue, 4));
+    
     }
     
     
@@ -26,6 +32,8 @@ public class Main extends javax.swing.JFrame {
     public Main(int id, String Name, String UserType) {
         
         initComponents();
+        Color customBlue = new Color(51, 0, 204);
+        this.getRootPane().setBorder(BorderFactory.createLineBorder(customBlue, 4));
         
         this.name = Name;
         jLabel1.setText(name);
@@ -64,10 +72,10 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("-");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("-");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 204));
@@ -218,7 +226,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
