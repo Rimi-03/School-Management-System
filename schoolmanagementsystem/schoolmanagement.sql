@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 12:09 AM
+-- Generation Time: Apr 15, 2024 at 01:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -103,7 +103,8 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 (11, 'Physics'),
 (12, 'Chemistry'),
 (13, 'ICT'),
-(14, 'Art');
+(14, 'Art'),
+(15, 'Social Studies');
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,7 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `dob` varchar(45) NOT NULL,
+  `dob` date NOT NULL,
   `gender` varchar(255) NOT NULL,
   `degree` varchar(255) NOT NULL,
   `religion` varchar(255) NOT NULL,
@@ -130,8 +131,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `dob`, `gender`, `degree`, `religion`, `address`, `phn_no`, `email`, `password`, `utype`) VALUES
-(1, 'John', '02-Apr-1996', 'Male', 'BBA', 'Christian', 'Dhaka,Bangladesh', 1247896321, 'john@gmail.com', 'john', 'Admin'),
-(2, 'Maria', '19-Jan-1999', 'Female', 'BSc. Mathematics', 'Islam', 'Sylhet, Bangladesh', 1478523698, 'Maria@gmail.com', 'maria', 'Teacher');
+(1, 'John', '1992-01-11', 'Male', 'BBA', 'Christian', 'Dhaka,Bangladesh', 1247896321, 'john@gmail.com', 'john', 'Admin'),
+(2, 'Mary', '1995-09-12', 'Female', 'BFA', 'Christian', 'Dhaka, Bangladesh', 1789632547, 'Mary123@gmail.com', 'mary', 'Teacher'),
+(3, 'Maria', '1992-06-10', 'Female', 'BSc. Mathematics', 'Islam', 'Sylhet, Bangladesh', 1478523698, 'Maria@gmail.com', 'maria', 'Teacher'),
+(4, 'Rahul', '1993-08-23', 'Male', 'BSc. CSE', 'Hindu', 'Sylhet, Bangladesh', 1236547892, 'Rahul@gmail.com', 'rahul', 'Teacher');
 
 --
 -- Indexes for dumped tables
@@ -181,13 +184,13 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
