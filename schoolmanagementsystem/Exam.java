@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -344,6 +346,11 @@ public class Exam extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -522,6 +529,29 @@ public class Exam extends javax.swing.JFrame {
     private void txtenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtenameActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        d = (DefaultTableModel) jTable1.getModel();
+        int selectIndex = jTable1.getSelectedRow();
+
+        String ExamID = d.getValueAt(selectIndex, 0).toString();
+        txtename.setText(d.getValueAt(selectIndex, 1).toString());
+        txtterm.setSelectedItem(d.getValueAt(selectIndex, 2).toString());
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = (Date) dateFormat.parse(d.getValueAt(selectIndex, 3).toString());
+            txtdate.setDate(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtclass.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
+        txtsection.setSelectedItem(d.getValueAt(selectIndex, 5).toString());
+        txtsubject.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
+        
+        jButton1.setEnabled(false);
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
