@@ -35,6 +35,8 @@ public class Exam extends javax.swing.JFrame {
         Load_Section();
         Load_Subject();
         Exam_Load();
+        
+        setTitle("School Management System");
     }
     
     Connection con;

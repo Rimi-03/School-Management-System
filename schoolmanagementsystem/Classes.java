@@ -29,6 +29,8 @@ public class Classes extends javax.swing.JFrame {
         initComponents();
         Connect();
         Class_Load();
+        
+        setTitle("School Management System");
     }
 
     Connection con;
