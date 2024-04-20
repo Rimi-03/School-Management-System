@@ -30,6 +30,8 @@ public class Subject extends javax.swing.JFrame {
         initComponents();
         Connect();
         Subject_Load();
+        
+        setTitle("School Management System");
     }
     
      
@@ -359,7 +361,7 @@ public class Subject extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Classes().setVisible(true);
+                new Subject().setVisible(true);
             }
         });
     }

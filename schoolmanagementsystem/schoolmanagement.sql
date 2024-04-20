@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 01:03 PM
+-- Generation Time: Apr 18, 2024 at 03:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,7 +49,8 @@ INSERT INTO `class` (`cid`, `classname`, `section`) VALUES
 (12, '8', 'A'),
 (13, '9', 'A'),
 (14, '10', 'A'),
-(15, '11', 'A');
+(15, '11', 'A'),
+(16, '7 ', 'E');
 
 -- --------------------------------------------------------
 
@@ -74,7 +75,59 @@ CREATE TABLE `exam` (
 INSERT INTO `exam` (`eid`, `ename`, `term`, `date`, `class`, `section`, `subject`) VALUES
 (1, 'Class test ', 'First Term', '2024-04-14', '3', 'A', 'General Knowledge'),
 (2, 'ICT Final Lab Examination', 'Final Term', '2024-04-20', '10', 'A', 'ICT'),
-(3, 'Final Examination', 'Final Term', '2024-05-02', '9', 'A', 'Biology');
+(3, 'Final Examination', 'Final Term', '2024-05-02', '9', 'A', 'Biology'),
+(4, 'Quiz', 'Final Term', '2024-04-18', '4', 'B', 'General Knowledge');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marks`
+--
+
+CREATE TABLE `marks` (
+  `id` int(11) NOT NULL,
+  `sid` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `marks` varchar(255) NOT NULL,
+  `term` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marks`
+--
+
+INSERT INTO `marks` (`id`, `sid`, `name`, `class`, `subject`, `marks`, `term`) VALUES
+(1, 1, 'Alexa Churco', '5', 'General Knowledge', '36', 'Final Term'),
+(2, 5, 'Tinley', '3', 'Mathematics', '35', 'Final Term');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL,
+  `sname` varchar(255) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `dob` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `sname`, `fname`, `dob`, `gender`, `phone`, `address`, `class`, `section`) VALUES
+(1, 'Alexa Churco', 'Maverick Churco', '2008-04-02', 'Female', '398349', 'Rome Italy', '5', 'B'),
+(5, 'Tinley ', 'Michael', '2016-04-21', 'Female', '5884626', 'NY USA', '3', 'E'),
+(7, 'Jacob', 'Worlo', '2015-04-21', 'Male', '5578', 'NY USA', '7 ', 'A');
 
 -- --------------------------------------------------------
 
@@ -103,8 +156,7 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 (11, 'Physics'),
 (12, 'Chemistry'),
 (13, 'ICT'),
-(14, 'Art'),
-(15, 'Social Studies');
+(14, 'Art');
 
 -- --------------------------------------------------------
 
@@ -115,7 +167,7 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` varchar(45) NOT NULL,
   `gender` varchar(255) NOT NULL,
   `degree` varchar(255) NOT NULL,
   `religion` varchar(255) NOT NULL,
@@ -131,10 +183,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `dob`, `gender`, `degree`, `religion`, `address`, `phn_no`, `email`, `password`, `utype`) VALUES
-(1, 'John', '1992-01-11', 'Male', 'BBA', 'Christian', 'Dhaka,Bangladesh', 1247896321, 'john@gmail.com', 'john', 'Admin'),
-(2, 'Mary', '1995-09-12', 'Female', 'BFA', 'Christian', 'Dhaka, Bangladesh', 1789632547, 'Mary123@gmail.com', 'mary', 'Teacher'),
-(3, 'Maria', '1992-06-10', 'Female', 'BSc. Mathematics', 'Islam', 'Sylhet, Bangladesh', 1478523698, 'Maria@gmail.com', 'maria', 'Teacher'),
-(4, 'Rahul', '1993-08-23', 'Male', 'BSc. CSE', 'Hindu', 'Sylhet, Bangladesh', 1236547892, 'Rahul@gmail.com', 'rahul', 'Teacher');
+(1, 'John', '1998-04-03', 'Male', 'BBA', 'Islam', 'Rome,Italy', 8976745, 'john78@gmail.com', 'john', 'Admin'),
+(2, 'Maria', '1999-07-06', 'Female', 'B.Sc in Mathematics', 'Islam', 'Rome,Italy', 9789687, 'maria567@gmail.com', 'maria', 'Teacher');
 
 --
 -- Indexes for dumped tables
@@ -151,6 +201,18 @@ ALTER TABLE `class`
 --
 ALTER TABLE `exam`
   ADD PRIMARY KEY (`eid`);
+
+--
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `subject`
@@ -172,25 +234,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

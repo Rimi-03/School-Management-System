@@ -31,6 +31,8 @@ public class Login extends javax.swing.JFrame {
         Color customBlue = new Color(51, 0, 204);
         this.getRootPane().setBorder(BorderFactory.createLineBorder(customBlue, 4));
         Connect();
+        
+        setTitle("School Management System");
     }
 
     /**
@@ -220,7 +222,21 @@ public class Login extends javax.swing.JFrame {
             {
                 int id = rs.getInt("id");
                 this.setVisible(false);
-                new Main(id,Name,UserType).setVisible(true);
+                
+                if(UserType.equals("Admin"))
+                {
+                    Main main = new Main(id, Name, UserType);
+                    main.setTitle("School Management System");
+                    main.setVisible(true);
+                }
+                
+                else 
+                {
+                    TeacherMain teacherMain = new TeacherMain(id, Name, UserType);
+                    teacherMain.setTitle("School Management System");
+                    teacherMain.setVisible(true);
+                }
+                
             }
             else
             {
