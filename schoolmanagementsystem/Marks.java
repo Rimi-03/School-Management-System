@@ -31,31 +31,27 @@ public class Marks extends javax.swing.JFrame {
         Load_Subject();
         Load_Class();
         Marks_Load();
-        
+
         setTitle("School Management System");
     }
-    
+
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     DefaultTableModel d;
-    
-    
-    public void Connect()
-    {
-       
+
+    public void Connect() {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement","root","");
-            
+            con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement", "root", "");
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,32 +125,36 @@ public class Marks extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(7, 7, 7)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtterm, 0, 134, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtmarks))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtsubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtno)
-                            .addComponent(txtstname)
-                            .addComponent(txtclass, 0, 134, Short.MAX_VALUE))))
+                        .addGap(7, 7, 7)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtterm, 0, 134, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtmarks)
+                        .addComponent(txtsubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtno)
+                        .addComponent(txtstname)
+                        .addComponent(txtclass, 0, 134, Short.MAX_VALUE)))
                 .addGap(33, 33, 33)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,105 +237,98 @@ public class Marks extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)
-                                .addGap(9, 9, 9)))))
-                .addGap(24, 24, 24)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void Marks_Load()
-    {
+    public void Marks_Load() {
         int c;
         try {
             pst = con.prepareStatement("SELECT * FROM marks");
             rs = pst.executeQuery();
-            
-            ResultSetMetaData rsd  = rs.getMetaData();
+
+            ResultSetMetaData rsd = rs.getMetaData();
             c = rsd.getColumnCount();
-            
-            d = (DefaultTableModel)jTable1.getModel();
+
+            d = (DefaultTableModel) jTable1.getModel();
             d.setRowCount(0);
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 Vector v2 = new Vector();
                 for (int i = 1; i <= c; i++) {
-                    
+
                     v2.add(rs.getString("id"));
                     v2.add(rs.getString("sid"));
                     v2.add(rs.getString("name"));
                     v2.add(rs.getString("class"));
                     v2.add(rs.getString("subject"));
                     v2.add(rs.getString("marks"));
-                    v2.add(rs.getString("term"));                   
-            
+                    v2.add(rs.getString("term"));
+
                 }
-                
+
                 d.addRow(v2);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
 
             String sid = txtno.getText();
-            
+
             pst = con.prepareStatement("select * from Student where id = ?");
             pst.setString(1, sid);
             rs = pst.executeQuery();
-            
-            if(rs.next() == false)
-            {
+
+            if (rs.next() == false) {
                 JOptionPane.showMessageDialog(this, "Student ID Not Found");
                 txtstname.setText("");
-            }
-            else 
-            {
+            } else {
                 String name = rs.getString("sname");
                 txtstname.setText(name.trim());
-                
+
                 String classes = rs.getString("class");
                 txtclass.removeAllItems();
                 txtclass.addItem(classes.trim());
@@ -347,23 +340,23 @@ public class Marks extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        
-        d = (DefaultTableModel)jTable1.getModel();
+
+        d = (DefaultTableModel) jTable1.getModel();
         int selectIndex = jTable1.getSelectedRow();
-        
+
         String id = d.getValueAt(selectIndex, 0).toString();
-        
+
         txtno.setText(d.getValueAt(selectIndex, 1).toString());
         txtstname.setText(d.getValueAt(selectIndex, 2).toString());
         txtclass.setSelectedItem(d.getValueAt(selectIndex, 3).toString());
         txtsubject.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
         txtmarks.setText(d.getValueAt(selectIndex, 5).toString());
         txtterm.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
-        
+
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
 
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -389,36 +382,34 @@ public class Marks extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        d = (DefaultTableModel)jTable1.getModel();
-        int selectIndex = jTable1.getSelectedRow();
+        d = (DefaultTableModel) jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
 
-        if (jTable1.getSelectedRow() == -1) {
+        if (selectedRowIndex == -1) {
             JOptionPane.showMessageDialog(this, "Please Select a Row to Edit.");
             return;
         }
 
-        if (jTable1.getSelectedRow() != 5) {
-            JOptionPane.showMessageDialog(this, "This Value isn't Allowed to Update.");
+        String currentMarks = d.getValueAt(selectedRowIndex, 5).toString();
+        String newMarks = txtmarks.getText();
+        
+        if (newMarks.equals(currentMarks)) {
+            JOptionPane.showMessageDialog(this, "You can only edit the marks field. Other information cannot be changed.");
             return;
         }
 
-        String id = d.getValueAt(selectIndex, 0).toString();
+        String id = d.getValueAt(selectedRowIndex, 0).toString();
 
-        String marks = txtmarks.getText();
-
-        try
-        {
-            pst = con.prepareStatement("Update marks set marks = ? where id = ?");
-
-            pst.setString(1, marks);
+        try {
+            pst = con.prepareStatement("UPDATE marks SET marks = ? WHERE id = ?");
+            pst.setString(1, newMarks);
             pst.setString(2, id);
-
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Student's Mark Edited successfully!");
-            Marks_Load();
 
-        }catch(SQLException ex)
-        {
+            d.setValueAt(newMarks, selectedRowIndex, 5);
+
+        } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -461,15 +452,13 @@ public class Marks extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-
     public void Load_Subject() {
         try {
             pst = con.prepareStatement("select Distinct subjectname from subject");
             rs = pst.executeQuery();
             txtsubject.removeAllItems();
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 txtsubject.addItem(rs.getString("subjectname"));
             }
 
@@ -477,15 +466,14 @@ public class Marks extends javax.swing.JFrame {
             Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void Load_Class() {
         try {
             pst = con.prepareStatement("select Distinct classname from class");
             rs = pst.executeQuery();
             txtclass.removeAllItems();
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 txtclass.addItem(rs.getString("classname"));
             }
 
@@ -493,8 +481,7 @@ public class Marks extends javax.swing.JFrame {
             Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
