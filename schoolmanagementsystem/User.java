@@ -30,6 +30,8 @@ public class User extends javax.swing.JFrame {
         initComponents();
         Connect();
         User_Load();
+        
+        setTitle("School Management System");
     }
 
     Connection con;
@@ -106,7 +108,6 @@ public class User extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtgender = new javax.swing.JTextField();
         txtDegree = new javax.swing.JTextField();
         txtReligion = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
@@ -118,6 +119,7 @@ public class User extends javax.swing.JFrame {
         txtPhnNo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtdob = new com.toedter.calendar.JDateChooser();
+        txtgender = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -163,8 +165,6 @@ public class User extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(51, 0, 204));
         jLabel11.setText("Password :");
 
-        txtgender.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtDegree.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtReligion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -200,6 +200,8 @@ public class User extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(51, 0, 204));
         jLabel13.setText("Email :");
 
+        txtgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,7 +227,7 @@ public class User extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtReligion)
                     .addComponent(txtAddress)
@@ -234,9 +236,9 @@ public class User extends javax.swing.JFrame {
                     .addComponent(txtUtype, 0, 200, Short.MAX_VALUE)
                     .addComponent(txtDegree)
                     .addComponent(txtName1)
-                    .addComponent(txtgender)
                     .addComponent(txtPhnNo)
-                    .addComponent(txtdob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtdob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtgender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -252,8 +254,8 @@ public class User extends javax.swing.JFrame {
                     .addComponent(txtdob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -404,7 +406,7 @@ public class User extends javax.swing.JFrame {
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
 
         pack();
@@ -420,7 +422,7 @@ public class User extends javax.swing.JFrame {
             SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
             String dob =  df1.format(txtdob.getDate());
             
-            String gender = txtgender.getText();
+            String gender = txtgender.getSelectedItem().toString();
             String degree = txtDegree.getText();
             String religion = txtReligion.getText();
             String address = txtAddress.getText();
@@ -446,7 +448,7 @@ public class User extends javax.swing.JFrame {
 
             txtName1.setText("");
             txtdob.setDate(null);
-            txtgender.setText("");
+            txtgender.setSelectedIndex(-1);
             txtDegree.setText("");
             txtReligion.setText("");
             txtAddress.setText("");
@@ -479,7 +481,7 @@ public class User extends javax.swing.JFrame {
         } catch (ParseException ex) {
             ex.printStackTrace(); // Handle parsing exception appropriately
         }
-        txtgender.setText(d.getValueAt(selectIndex, 3).toString());
+        txtgender.setSelectedItem(d.getValueAt(selectIndex, 3).toString());
         txtAddress.setText(d.getValueAt(selectIndex, 4).toString());
         txtEmail.setText(d.getValueAt(selectIndex, 5).toString());
         txtPhnNo.setText(d.getValueAt(selectIndex, 6).toString());
@@ -503,7 +505,7 @@ public class User extends javax.swing.JFrame {
             SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
             String dob =  df1.format(txtdob.getDate());
             String name = txtName1.getText();
-            String gender = txtgender.getText();
+            String gender = txtgender.getSelectedItem().toString();
             String degree = txtDegree.getText();
             String religion = txtReligion.getText();
             String address = txtAddress.getText();
@@ -532,7 +534,7 @@ public class User extends javax.swing.JFrame {
 
             txtName1.setText("");
             txtdob.setDate(null);
-            txtgender.setText("");
+            txtgender.setSelectedIndex(-1);
             txtDegree.setText("");
             txtReligion.setText("");
             txtAddress.setText("");
@@ -555,7 +557,7 @@ public class User extends javax.swing.JFrame {
         jButton1.setEnabled(true);
         txtName1.setText("");
         txtdob.setDate(null);
-        txtgender.setText("");
+        txtgender.setSelectedIndex(-1);
         txtDegree.setText("");
         txtReligion.setText("");
         txtAddress.setText("");
@@ -574,7 +576,7 @@ public class User extends javax.swing.JFrame {
             d = (DefaultTableModel) jTable2.getModel();
             int selectIndex = jTable2.getSelectedRow();
 
-            if (selectIndex != -1) { // Check if a row is selected
+            if (selectIndex != -1) { 
                 String ID = d.getValueAt(selectIndex, 0).toString();
 
                 pst = con.prepareStatement("DELETE FROM user WHERE ID = ?");
@@ -592,7 +594,7 @@ public class User extends javax.swing.JFrame {
 
                 txtName1.setText("");
                 txtdob.setDate(null);
-                txtgender.setText("");
+                txtgender.setSelectedIndex(-1);
                 txtDegree.setText("");
                 txtReligion.setText("");
                 txtAddress.setText("");
@@ -629,6 +631,13 @@ public class User extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtName1ActionPerformed
 
+    
+    public void setButtonEnabled(boolean enabled) {
+        jButton1.setEnabled(enabled);
+        jButton2.setEnabled(enabled);
+        jButton3.setEnabled(enabled);
+        jButton4.setEnabled(enabled);
+    }
     /**
      * @param args the command line arguments
      */
@@ -698,7 +707,7 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JTextField txtReligion;
     private javax.swing.JComboBox<String> txtUtype;
     private com.toedter.calendar.JDateChooser txtdob;
-    private javax.swing.JTextField txtgender;
+    private javax.swing.JComboBox<String> txtgender;
     // End of variables declaration//GEN-END:variables
 
 }

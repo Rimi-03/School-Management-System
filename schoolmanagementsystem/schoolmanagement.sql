@@ -178,7 +178,6 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 (19, 'History'),
 (20, 'Social Studies'),
 (21, 'Science');
-
 -- --------------------------------------------------------
 
 --
@@ -286,7 +285,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
