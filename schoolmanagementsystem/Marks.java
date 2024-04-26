@@ -31,31 +31,27 @@ public class Marks extends javax.swing.JFrame {
         Load_Subject();
         Load_Class();
         Marks_Load();
-        
+
         setTitle("School Management System");
     }
-    
+
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     DefaultTableModel d;
-    
-    
-    public void Connect()
-    {
-       
+
+    public void Connect() {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement","root","");
-            
+            con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement", "root", "");
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -282,62 +278,57 @@ public class Marks extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void Marks_Load()
-    {
+    public void Marks_Load() {
         int c;
         try {
             pst = con.prepareStatement("SELECT * FROM marks");
             rs = pst.executeQuery();
-            
-            ResultSetMetaData rsd  = rs.getMetaData();
+
+            ResultSetMetaData rsd = rs.getMetaData();
             c = rsd.getColumnCount();
-            
-            d = (DefaultTableModel)jTable1.getModel();
+
+            d = (DefaultTableModel) jTable1.getModel();
             d.setRowCount(0);
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 Vector v2 = new Vector();
                 for (int i = 1; i <= c; i++) {
-                    
+
                     v2.add(rs.getString("id"));
                     v2.add(rs.getString("sid"));
                     v2.add(rs.getString("name"));
                     v2.add(rs.getString("class"));
                     v2.add(rs.getString("subject"));
                     v2.add(rs.getString("marks"));
-                    v2.add(rs.getString("term"));                   
-            
+                    v2.add(rs.getString("term"));
+
                 }
-                
+
                 d.addRow(v2);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
 
             String sid = txtno.getText();
-            
+
             pst = con.prepareStatement("select * from Student where id = ?");
             pst.setString(1, sid);
             rs = pst.executeQuery();
-            
-            if(rs.next() == false)
-            {
+
+            if (rs.next() == false) {
                 JOptionPane.showMessageDialog(this, "Student ID Not Found");
                 txtstname.setText("");
-            }
-            else 
-            {
+            } else {
                 String name = rs.getString("sname");
                 txtstname.setText(name.trim());
-                
+
                 String classes = rs.getString("class");
                 txtclass.removeAllItems();
                 txtclass.addItem(classes.trim());
@@ -349,23 +340,23 @@ public class Marks extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        
-        d = (DefaultTableModel)jTable1.getModel();
+
+        d = (DefaultTableModel) jTable1.getModel();
         int selectIndex = jTable1.getSelectedRow();
-        
+
         String id = d.getValueAt(selectIndex, 0).toString();
-        
+
         txtno.setText(d.getValueAt(selectIndex, 1).toString());
         txtstname.setText(d.getValueAt(selectIndex, 2).toString());
         txtclass.setSelectedItem(d.getValueAt(selectIndex, 3).toString());
         txtsubject.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
         txtmarks.setText(d.getValueAt(selectIndex, 5).toString());
         txtterm.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
-        
+
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
 
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -391,36 +382,33 @@ public class Marks extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        d = (DefaultTableModel)jTable1.getModel();
-        int selectIndex = jTable1.getSelectedRow();
+        d = (DefaultTableModel) jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
 
-        if (jTable1.getSelectedRow() == -1) {
+        if (selectedRowIndex == -1) {
             JOptionPane.showMessageDialog(this, "Please Select a Row to Edit.");
             return;
         }
 
-        if (jTable1.getSelectedRow() != 5) {
-            JOptionPane.showMessageDialog(this, "This Value is not Allowed to be Updated.");
-            return;
-        }
+        String currentMarks = d.getValueAt(selectedRowIndex, 5).toString();
+        String newMarks = txtmarks.getText();
+        
+        if (newMarks.equals(currentMarks)) {
+            JOptionPane.showMessageDialog(this, "You can only edit the marks field. Other information cannot be changed.");
 
-        String id = d.getValueAt(selectIndex, 0).toString();
 
-        String marks = txtmarks.getText();
+        String id = d.getValueAt(selectedRowIndex, 0).toString();
 
-        try
-        {
-            pst = con.prepareStatement("Update marks set marks = ? where id = ?");
-
-            pst.setString(1, marks);
+        try {
+            pst = con.prepareStatement("UPDATE marks SET marks = ? WHERE id = ?");
+            pst.setString(1, newMarks);
             pst.setString(2, id);
-
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Student's Mark Edited successfully!");
-            Marks_Load();
 
-        }catch(SQLException ex)
-        {
+            d.setValueAt(newMarks, selectedRowIndex, 5);
+
+        } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -463,15 +451,13 @@ public class Marks extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-
     public void Load_Subject() {
         try {
             pst = con.prepareStatement("select Distinct subjectname from subject");
             rs = pst.executeQuery();
             txtsubject.removeAllItems();
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 txtsubject.addItem(rs.getString("subjectname"));
             }
 
@@ -479,15 +465,14 @@ public class Marks extends javax.swing.JFrame {
             Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void Load_Class() {
         try {
             pst = con.prepareStatement("select Distinct classname from class");
             rs = pst.executeQuery();
             txtclass.removeAllItems();
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 txtclass.addItem(rs.getString("classname"));
             }
 
@@ -495,8 +480,7 @@ public class Marks extends javax.swing.JFrame {
             Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
