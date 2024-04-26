@@ -6,6 +6,8 @@
 package schoolmanagementsystem;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,6 +35,28 @@ public class Login extends javax.swing.JFrame {
         Connect();
         
         setTitle("School Management System");
+        
+        txtName.addActionListener(new ActionListener() {    
+            @Override    
+            public void actionPerformed(ActionEvent e) {
+            jButton1.doClick(); // Simulate a click on jButton1
+        }
+    });
+
+    txtPass.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            jButton1.doClick(); // Simulate a click on jButton1
+        }
+    });
+
+    txtUtype.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            jButton1.doClick(); // Simulate a click on jButton1
+        }
+    });
+
     }
 
     /**
@@ -48,13 +72,14 @@ public class Login extends javax.swing.JFrame {
     DefaultTableModel d;
 
     
-    public void Connect()
-    {
-       
+    public void Connect() {
+        String url = "jdbc:mysql://localhost:3306/schoolmanagement";
+        String username = "root";
+        String password = "#123Abc@";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement","root","");
-            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            //System.out.println(con);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
