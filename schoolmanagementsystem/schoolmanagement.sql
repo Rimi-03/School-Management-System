@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 03:56 PM
+-- Generation Time: Apr 26, 2024 at 12:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,7 +50,8 @@ INSERT INTO `class` (`cid`, `classname`, `section`) VALUES
 (13, '9', 'A'),
 (14, '10', 'A'),
 (15, '11', 'A'),
-(16, '7 ', 'E');
+(16, '7 ', 'E'),
+(18, '7 ', 'C');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,7 @@ INSERT INTO `class` (`cid`, `classname`, `section`) VALUES
 
 CREATE TABLE `exam` (
   `eid` int(11) NOT NULL,
-  `ename` varchar(255) NOT NULL,
+  `shift` varchar(255) NOT NULL,
   `term` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
@@ -72,11 +73,23 @@ CREATE TABLE `exam` (
 -- Dumping data for table `exam`
 --
 
-INSERT INTO `exam` (`eid`, `ename`, `term`, `date`, `class`, `section`, `subject`) VALUES
-(1, 'Class test ', 'First Term', '2024-04-14', '3', 'A', 'General Knowledge'),
-(2, 'ICT Final Lab Examination', 'Final Term', '2024-04-20', '10', 'A', 'ICT'),
-(3, 'Final Examination', 'Final Term', '2024-05-02', '9', 'A', 'Biology'),
-(4, 'Quiz', 'Final Term', '2024-04-18', '4', 'B', 'General Knowledge');
+INSERT INTO `exam` (`eid`, `shift`, `term`, `date`, `class`, `section`, `subject`) VALUES
+(1, 'Morning', 'First Term', '2023-03-05', '8', 'A', 'Mathematics'),
+(2, 'Afternoon', 'First Term', '2023-03-05', '8', 'B', 'Mathematics'),
+(7, 'Morning', 'First Term', '2023-03-05', '11', 'A', 'Mechanics'),
+(8, 'Afternoon', 'First Term', '2023-03-05', '11', 'B', 'Mechanics'),
+(9, 'Morning', 'First Term', '2023-03-08', '8', 'A', 'Geography'),
+(10, 'Afternoon', 'First Term', '2023-03-08', '8', 'B', 'Geography'),
+(11, 'Morning', 'First Term', '2023-03-09', '11', 'A', 'Marketing'),
+(12, 'Afternoon', 'First Term', '2023-03-09', '11', 'B', 'Marketing'),
+(13, 'Morning', 'Second Term', '2023-07-09', '8', 'A', 'Mathematics'),
+(14, 'Afternoon', 'Second Term', '2023-07-09', '8', 'B', 'Mathematics'),
+(15, 'Morning', 'Second Term', '2023-07-10', '11', 'A', 'Mechanics'),
+(16, 'Afternoon', 'Second Term', '2023-07-10', '11', 'B', 'Mechanics'),
+(17, 'Morning', 'Final Term', '2023-11-19', '8', 'B', 'Mathematics'),
+(18, 'Afternoon', 'Final Term', '2023-11-19', '8', 'A', 'Mathematics'),
+(19, 'Morning', 'Final Term', '2023-12-03', '11', 'B', 'Mechanics'),
+(20, 'Afternoon', 'Final Term', '2023-12-03', '11', 'A', 'Mechanics');
 
 -- --------------------------------------------------------
 
@@ -100,7 +113,7 @@ CREATE TABLE `marks` (
 
 INSERT INTO `marks` (`id`, `sid`, `name`, `class`, `subject`, `marks`, `term`) VALUES
 (1, 1, 'Alexa Churco', '5', 'General Knowledge', '36', 'Final Term'),
-(2, 5, 'Tinley', '3', 'Mathematics', '35', 'Final Term');
+(2, 5, 'Tinley', '3', 'Mathematics', '38', 'Final Term');
 
 -- --------------------------------------------------------
 
@@ -125,9 +138,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `sname`, `fname`, `dob`, `gender`, `phone`, `address`, `class`, `section`) VALUES
-(1, 'Alexa Churco', 'Maverick Churco', '2008-04-02', 'Female', '398349', 'Rome Italy', '5', 'B'),
-(5, 'Tinley ', 'Michael', '2016-04-21', 'Female', '5884626', 'NY USA', '3', 'E'),
-(7, 'Jacob', 'Worlo', '2015-04-21', 'Male', '5578', 'NY USA', '7 ', 'A');
+(1, 'Alexa Churco', 'Maverick Churco', '2008-04-02', 'Female', '398345', 'Rome Italy', '5', 'B'),
+(5, 'Tinley ', 'Michael', '2016-04-21', 'Female', '5884626', 'NY USA', '3', 'A'),
+(7, 'Jacob', 'Worlo', '2015-04-21', 'Male', '5578', 'NY USA', '7 ', 'A'),
+(8, 'Joseph Miller', 'James Miller', '2012-08-06', 'Male', '01478965236', 'Okhlahoma, USA', '6', 'B');
 
 -- --------------------------------------------------------
 
@@ -156,8 +170,14 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 (11, 'Physics'),
 (12, 'Chemistry'),
 (13, 'ICT'),
-(14, 'Art');
-
+(14, 'Art'),
+(15, 'Accounting'),
+(16, 'Economics'),
+(17, 'Marketing'),
+(18, 'Geography'),
+(19, 'History'),
+(20, 'Social Studies'),
+(21, 'Science');
 -- --------------------------------------------------------
 
 --
@@ -183,8 +203,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `dob`, `gender`, `degree`, `religion`, `address`, `phn_no`, `email`, `password`, `utype`) VALUES
-(1, 'John', '1998-04-03', 'Male', 'BBA', 'Islam', 'Rome,Italy', 8976745, 'john78@gmail.com', 'john', 'Admin'),
-(2, 'Maria', '1999-07-06', 'Female', 'B.Sc in Mathematics', 'Islam', 'Rome,Italy', 9789687, 'maria567@gmail.com', 'maria', 'Teacher');
+(1, 'admin', '1999-09-09', 'Male', 'admin', 'none', 'none', 100, 'admin@gmail.com', 'admin', 'Admin'),
+(2, 'John', '1998-04-03', 'Male', 'BBA', 'Islam', 'Rome,Italy', 8976745, 'john78@gmail.com', 'john', 'Admin'),
+(3, 'Maria', '1999-07-06', 'Female', 'B.Sc in Mathematics', 'Islam', 'Rome,Italy', 9789687, 'maria567@gmail.com', 'maria', 'Teacher');
 
 --
 -- Indexes for dumped tables
@@ -234,31 +255,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user`

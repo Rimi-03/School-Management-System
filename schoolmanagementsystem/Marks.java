@@ -395,8 +395,7 @@ public class Marks extends javax.swing.JFrame {
         
         if (newMarks.equals(currentMarks)) {
             JOptionPane.showMessageDialog(this, "You can only edit the marks field. Other information cannot be changed.");
-            return;
-        }
+
 
         String id = d.getValueAt(selectedRowIndex, 0).toString();
 
