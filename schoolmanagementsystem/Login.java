@@ -6,6 +6,8 @@
 package schoolmanagementsystem;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,6 +35,28 @@ public class Login extends javax.swing.JFrame {
         Connect();
         
         setTitle("School Management System");
+        
+        txtName.addActionListener(new ActionListener() {    
+            @Override    
+            public void actionPerformed(ActionEvent e) {
+            jButton1.doClick();
+        }
+    });
+
+    txtPass.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            jButton1.doClick();
+        }
+    });
+
+    txtUtype.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            jButton1.doClick();
+        }
+    });
+
     }
 
     /**
@@ -50,7 +74,6 @@ public class Login extends javax.swing.JFrame {
     
     public void Connect()
     {
-       
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/schoolmanagement","root","");
