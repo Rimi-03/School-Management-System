@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2024 at 12:50 PM
+-- Generation Time: Apr 27, 2024 at 09:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `schoolmanagement`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessment`
+--
+
+CREATE TABLE `assessment` (
+  `id` int(11) NOT NULL,
+  `sid` int(11) NOT NULL,
+  `sname` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `term` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `ctmark` varchar(255) NOT NULL,
+  `asmark` varchar(255) NOT NULL,
+  `atmark` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `assessment`
+--
+
+INSERT INTO `assessment` (`id`, `sid`, `sname`, `class`, `section`, `term`, `subject`, `ctmark`, `asmark`, `atmark`) VALUES
+(1, 1, 'Alexa Churco', '5', 'B', 'First Term', 'General Knowledge', '15', '5', '9'),
+(2, 8, 'Joseph Miller', '6', 'B', 'Second Term', 'English Literature', '11', '10', '5'),
+(3, 9, 'Blakley', '2', 'A', 'First Term', 'ICT', '20', '10', '10'),
+(4, 9, 'Blakley', '2', 'A', 'Second Term', 'Mechanics', '20', '10', '10'),
+(5, 1, 'Alexa Churco', '5', 'B', 'Second Term', 'Mathematics', '19', '9', '10');
 
 -- --------------------------------------------------------
 
@@ -51,7 +81,8 @@ INSERT INTO `class` (`cid`, `classname`, `section`) VALUES
 (14, '10', 'A'),
 (15, '11', 'A'),
 (16, '7 ', 'E'),
-(18, '7 ', 'C');
+(18, '7 ', 'C'),
+(19, '12', 'A');
 
 -- --------------------------------------------------------
 
@@ -89,7 +120,8 @@ INSERT INTO `exam` (`eid`, `shift`, `term`, `date`, `class`, `section`, `subject
 (17, 'Morning', 'Final Term', '2023-11-19', '8', 'B', 'Mathematics'),
 (18, 'Afternoon', 'Final Term', '2023-11-19', '8', 'A', 'Mathematics'),
 (19, 'Morning', 'Final Term', '2023-12-03', '11', 'B', 'Mechanics'),
-(20, 'Afternoon', 'Final Term', '2023-12-03', '11', 'A', 'Mechanics');
+(20, 'Afternoon', 'Final Term', '2023-12-03', '11', 'A', 'Mechanics'),
+(22, 'Morning', 'First Term', '2024-04-04', '7 ', 'A', 'Islamic Studies');
 
 -- --------------------------------------------------------
 
@@ -102,18 +134,21 @@ CREATE TABLE `marks` (
   `sid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `term` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `marks` varchar(255) NOT NULL,
-  `term` varchar(255) NOT NULL
+  `mark` varchar(255) NOT NULL,
+  `grade` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `marks`
 --
 
-INSERT INTO `marks` (`id`, `sid`, `name`, `class`, `subject`, `marks`, `term`) VALUES
-(1, 1, 'Alexa Churco', '5', 'General Knowledge', '36', 'Final Term'),
-(2, 5, 'Tinley', '3', 'Mathematics', '38', 'Final Term');
+INSERT INTO `marks` (`id`, `sid`, `name`, `class`, `section`, `term`, `subject`, `mark`, `grade`) VALUES
+(1, 1, 'Alexa Churco', '5', 'B', 'First Term', 'General Knowledge', '58', 'A+'),
+(2, 8, 'Joseph Miller', '6', 'B', 'Second Term', 'English Literature', '60', 'A+'),
+(3, 9, 'Blakley', '2', 'A', 'First Term', 'ICT', '43', 'A+');
 
 -- --------------------------------------------------------
 
@@ -140,8 +175,8 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`id`, `sname`, `fname`, `dob`, `gender`, `phone`, `address`, `class`, `section`) VALUES
 (1, 'Alexa Churco', 'Maverick Churco', '2008-04-02', 'Female', '398345', 'Rome Italy', '5', 'B'),
 (5, 'Tinley ', 'Michael', '2016-04-21', 'Female', '5884626', 'NY USA', '3', 'A'),
-(7, 'Jacob', 'Worlo', '2015-04-21', 'Male', '5578', 'NY USA', '7 ', 'A'),
-(8, 'Joseph Miller', 'James Miller', '2012-08-06', 'Male', '01478965236', 'Okhlahoma, USA', '6', 'B');
+(8, 'Joseph Miller', 'James Miller', '2012-08-06', 'Male', '01478965236', 'Okhlahoma, USA', '6', 'B'),
+(9, 'Blakley', 'John', '2012-04-18', 'Female', '896877', 'NY USA', '2', 'A');
 
 -- --------------------------------------------------------
 
@@ -178,6 +213,7 @@ INSERT INTO `subject` (`sid`, `subjectname`) VALUES
 (19, 'History'),
 (20, 'Social Studies'),
 (21, 'Science');
+
 -- --------------------------------------------------------
 
 --
@@ -210,6 +246,12 @@ INSERT INTO `user` (`id`, `name`, `dob`, `gender`, `degree`, `religion`, `addres
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `assessment`
+--
+ALTER TABLE `assessment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `class`
@@ -252,28 +294,34 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `assessment`
+--
+ALTER TABLE `assessment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `subject`

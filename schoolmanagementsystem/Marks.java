@@ -27,9 +27,16 @@ public class Marks extends javax.swing.JFrame {
      */
     public Marks() {
         initComponents();
+        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(75);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(40);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        
         Connect();
-        Load_Subject();
         Load_Class();
+        Load_Section();
+        Load_Subject();
         Marks_Load();
 
         setTitle("School Management System");
@@ -74,21 +81,32 @@ public class Marks extends javax.swing.JFrame {
         txtstname = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         txtsubject = new javax.swing.JComboBox<>();
-        txtmarks = new javax.swing.JTextField();
-        txtterm = new javax.swing.JComboBox<>();
         txtclass = new javax.swing.JComboBox<>();
+        txtgrade = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtctmark = new javax.swing.JTextField();
+        txtasmark = new javax.swing.JTextField();
+        txtatmark = new javax.swing.JTextField();
+        txtmark = new javax.swing.JTextField();
+        txtterm = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        txtsection = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel1.setText("Student Marks");
+        jLabel1.setText("Student Grade");
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -105,7 +123,7 @@ public class Marks extends javax.swing.JFrame {
         jLabel5.setText("Subject");
 
         jLabel6.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel6.setText("Marks");
+        jLabel6.setText("Grade");
 
         jLabel7.setForeground(new java.awt.Color(51, 0, 204));
         jLabel7.setText("Term");
@@ -117,7 +135,29 @@ public class Marks extends javax.swing.JFrame {
             }
         });
 
+        txtgrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A", "A-", "B", "C", "D", "F" }));
+
+        jLabel8.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel8.setText("Class Test(20)");
+
+        jLabel9.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel9.setText("Assignment(10)");
+
+        jLabel10.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel10.setText("Attendence(10)");
+
+        jLabel11.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel11.setText("Mark(60)");
+
         txtterm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Term", "Second Term", "Final Term" }));
+        txtterm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttermActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel12.setText("Section");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,35 +166,49 @@ public class Marks extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(7, 7, 7)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtterm, 0, 134, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtmarks)
-                        .addComponent(txtsubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtno)
-                        .addComponent(txtstname)
-                        .addComponent(txtclass, 0, 134, Short.MAX_VALUE)))
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(179, 179, 179)
+                        .addComponent(jButton1)
+                        .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtgrade, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtctmark)
+                                            .addComponent(txtasmark)
+                                            .addComponent(txtatmark)
+                                            .addComponent(txtmark)
+                                            .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtclass, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtstname, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtterm, 0, 134, Short.MAX_VALUE)
+                                    .addComponent(txtsection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,19 +226,39 @@ public class Marks extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtclass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtsection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtterm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtctmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtasmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtatmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtmarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtterm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(txtgrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jButton2.setText("Save");
@@ -213,7 +287,7 @@ public class Marks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sequence", "SID", "SName", "Class", "Subject", "Marks", "Term"
+                "Sequence", "SID", "Student Name", "Class", "Section", "Term", "Subject", "Mark", "Grade"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,6 +304,13 @@ public class Marks extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Delete");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,40 +319,43 @@ public class Marks extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(326, 326, 326)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5)
+                    .addComponent(jButton4)
+                    .addComponent(jButton6))
+                .addContainerGap())
         );
 
         pack();
@@ -298,9 +382,12 @@ public class Marks extends javax.swing.JFrame {
                     v2.add(rs.getString("sid"));
                     v2.add(rs.getString("name"));
                     v2.add(rs.getString("class"));
-                    v2.add(rs.getString("subject"));
-                    v2.add(rs.getString("marks"));
+                    v2.add(rs.getString("section"));
                     v2.add(rs.getString("term"));
+                    v2.add(rs.getString("subject"));                   
+                    v2.add(rs.getString("mark"));
+                    v2.add(rs.getString("grade"));
+                    
 
                 }
 
@@ -325,6 +412,8 @@ public class Marks extends javax.swing.JFrame {
             if (rs.next() == false) {
                 JOptionPane.showMessageDialog(this, "Student ID Not Found");
                 txtstname.setText("");
+                txtclass.setSelectedIndex(-1);
+                txtsection.setSelectedIndex(-1);
             } else {
                 String name = rs.getString("sname");
                 txtstname.setText(name.trim());
@@ -332,6 +421,10 @@ public class Marks extends javax.swing.JFrame {
                 String classes = rs.getString("class");
                 txtclass.removeAllItems();
                 txtclass.addItem(classes.trim());
+                
+                String section = rs.getString("section");
+                txtsection.removeAllItems();
+                txtsection.addItem(section.trim());
             }
         } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
@@ -347,11 +440,14 @@ public class Marks extends javax.swing.JFrame {
         String id = d.getValueAt(selectIndex, 0).toString();
 
         txtno.setText(d.getValueAt(selectIndex, 1).toString());
-        txtstname.setText(d.getValueAt(selectIndex, 2).toString());
-        txtclass.setSelectedItem(d.getValueAt(selectIndex, 3).toString());
-        txtsubject.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
-        txtmarks.setText(d.getValueAt(selectIndex, 5).toString());
-        txtterm.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
+        txtstname.setText(d.getValueAt(selectIndex, 2).toString());       
+        txtclass.setSelectedItem(d.getValueAt(selectIndex, 3).toString()); 
+        txtsection.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
+        txtterm.setSelectedItem(d.getValueAt(selectIndex, 5).toString());
+        txtsubject.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
+        txtmark.setText(d.getValueAt(selectIndex, 7).toString());
+        txtgrade.setSelectedItem(d.getValueAt(selectIndex, 8).toString());
+        
 
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
@@ -371,9 +467,14 @@ public class Marks extends javax.swing.JFrame {
         txtno.setText("");
         txtstname.setText("");
         txtclass.setSelectedIndex(-1);
-        txtsubject.setSelectedIndex(-1);
-        txtmarks.setText("");
+        txtsection.setSelectedIndex(-1);
         txtterm.setSelectedIndex(-1);
+        txtsubject.setSelectedIndex(-1);
+        txtctmark.setText("");
+        txtasmark.setText("");
+        txtatmark.setText("");
+        txtmark.setText("");
+        txtgrade.setSelectedIndex(-1);
 
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
@@ -390,23 +491,31 @@ public class Marks extends javax.swing.JFrame {
             return;
         }
 
-        String currentMarks = d.getValueAt(selectedRowIndex, 5).toString();
-        String newMarks = txtmarks.getText();
+        String id = d.getValueAt(selectedRowIndex, 0).toString(); 
         
-        if (newMarks.equals(currentMarks)) {
-            JOptionPane.showMessageDialog(this, "You can only edit the marks field. Other information cannot be changed.");
+        String currentMarks = d.getValueAt(selectedRowIndex, 7).toString();
+        String newMarks = txtmark.getText();
+        
+        String currentGrade = d.getValueAt(selectedRowIndex, 8).toString();
+        String newGrade = txtgrade.getSelectedItem().toString();
+        
+        if (newMarks.equals(currentMarks) && newGrade.equals(currentGrade)) {
+            JOptionPane.showMessageDialog(this, "You can only edit the mark and grade field. Other information cannot be changed.");
+            return;
+        }
 
-
-        String id = d.getValueAt(selectedRowIndex, 0).toString();
-
+        
         try {
-            pst = con.prepareStatement("UPDATE marks SET marks = ? WHERE id = ?");
+            pst = con.prepareStatement("UPDATE marks SET mark = ?, grade = ? WHERE id = ?");
             pst.setString(1, newMarks);
-            pst.setString(2, id);
+            pst.setString(2, newGrade);
+            pst.setString(3, id);
+            
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Student's Mark Edited successfully!");
+            JOptionPane.showMessageDialog(this, "Student's Grade Edited successfully!");
 
-            d.setValueAt(newMarks, selectedRowIndex, 5);
+            d.setValueAt(newMarks, selectedRowIndex, 7);
+            d.setValueAt(newGrade, selectedRowIndex, 8);
 
         } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
@@ -419,29 +528,45 @@ public class Marks extends javax.swing.JFrame {
         String sno = txtno.getText();
         String sname = txtstname.getText();
         String classes = txtclass.getSelectedItem().toString();
-        String subject = txtsubject.getSelectedItem().toString();
-        String marks = txtmarks.getText();
+        String section = txtsection.getSelectedItem().toString();       
         String term = txtterm.getSelectedItem().toString();
+        String subject = txtsubject.getSelectedItem().toString();
+        String mark = txtmark.getText();
+        String grade = txtgrade.getSelectedItem().toString();
+        
 
         try {
-            pst = con.prepareStatement("insert into marks(sid,name,class,subject,marks,term) values(?,?,?,?,?,?)");
+            pst = con.prepareStatement("insert into marks(sid,name,class,section,term,subject,mark,grade) values(?,?,?,?,?,?,?,?)");
 
             pst.setString(1, sno);
             pst.setString(2, sname);
             pst.setString(3, classes);
-            pst.setString(4, subject);
-            pst.setString(5, marks);
-            pst.setString(6, term);
+            pst.setString(4, section);
+            pst.setString(5, term);
+            pst.setString(6, subject);            
+            pst.setString(7, mark);
+            pst.setString(8, grade);
+            
 
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Student's Mark Added Successfully!");
+            JOptionPane.showMessageDialog(this, "Student's Grade Added Successfully!");
 
+            
+            Load_Class();
+            Load_Section();
+            
             txtno.setText("");
             txtstname.setText("");
             txtclass.setSelectedIndex(-1);
-            txtsubject.setSelectedIndex(-1);
-            txtmarks.setText("");
+            txtsection.setSelectedIndex(-1);
             txtterm.setSelectedIndex(-1);
+            txtsubject.setSelectedIndex(-1);
+            txtctmark.setText("");
+            txtasmark.setText("");
+            txtatmark.setText("");
+            txtmark.setText("");
+            txtgrade.setSelectedIndex(-1);
+            
 
             Marks_Load();
 
@@ -450,6 +575,100 @@ public class Marks extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txttermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttermActionPerformed
+        // TODO add your handling code here:
+        
+        // Retrieve the selected term
+        Object selectedTermObj = txtterm.getSelectedItem();
+
+        // Check if the selected term is null
+        if (selectedTermObj == null) {
+            JOptionPane.showMessageDialog(this, "Please select a term.");
+            return;
+        }
+
+        // Convert the selected term to string
+        String selectedTerm = selectedTermObj.toString();
+
+        // Retrieve the student name
+        String studentName = txtstname.getText().trim();
+
+        if (studentName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student name.");
+            return;
+        }
+
+        // Query the database for assessment marks based on the selected term and student name
+        try {
+            pst = con.prepareStatement("SELECT subject, ctmark, asmark, atmark FROM assessment WHERE term = ? AND sname = ?");
+            pst.setString(1, selectedTerm);
+            pst.setString(2, studentName);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                // Populate the text fields with the fetched marks
+                txtsubject.setSelectedItem(rs.getString("subject"));
+                txtctmark.setText(rs.getString("ctmark"));
+                txtasmark.setText(rs.getString("asmark"));
+                txtatmark.setText(rs.getString("atmark"));
+            } else {
+                // Handle case where no assessment marks are found for the selected term and student name
+                txtsubject.setSelectedIndex(-1);
+                txtctmark.setText("");
+                txtasmark.setText("");
+                txtatmark.setText("");
+                JOptionPane.showMessageDialog(this, "No assessment marks found for the selected term and student name.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_txttermActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            
+            d = (DefaultTableModel)jTable1.getModel();
+            int selectIndex = jTable1.getSelectedRow();
+
+            if (jTable1.getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(this, "Please Select a Row to Delete.");
+                return;
+            }
+            
+            String id = d.getValueAt(selectIndex, 0).toString();
+        
+            pst = con.prepareStatement("delete from marks where id = ? ");
+            pst.setString(1, id);
+            
+            
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Student Marks Information Deleted Successfully!");
+            
+            txtno.setText("");
+            txtstname.setText("");
+            txtclass.setSelectedIndex(-1);
+            txtsection.setSelectedIndex(-1);
+            txtterm.setSelectedIndex(-1);
+            txtsubject.setSelectedIndex(-1);
+            txtctmark.setText("");
+            txtasmark.setText("");
+            txtatmark.setText("");
+            txtmark.setText("");
+            txtgrade.setSelectedIndex(-1);
+            
+            Marks_Load();
+            
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(true);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     public void Load_Subject() {
         try {
@@ -471,14 +690,32 @@ public class Marks extends javax.swing.JFrame {
             pst = con.prepareStatement("select Distinct classname from class");
             rs = pst.executeQuery();
             txtclass.removeAllItems();
-
-            while (rs.next()) {
+            
+            while(rs.next())
+            {
                 txtclass.addItem(rs.getString("classname"));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+    public void Load_Section() {
+        try {
+            pst = con.prepareStatement("select Distinct section from class");
+            rs = pst.executeQuery();
+            txtsection.removeAllItems();
+            
+            while(rs.next())
+            {
+                txtsection.addItem(rs.getString("section"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -523,19 +760,30 @@ public class Marks extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtasmark;
+    private javax.swing.JTextField txtatmark;
     private javax.swing.JComboBox<String> txtclass;
-    private javax.swing.JTextField txtmarks;
+    private javax.swing.JTextField txtctmark;
+    private javax.swing.JComboBox<String> txtgrade;
+    private javax.swing.JTextField txtmark;
     private javax.swing.JTextField txtno;
+    private javax.swing.JComboBox<String> txtsection;
     private javax.swing.JTextField txtstname;
     private javax.swing.JComboBox<String> txtsubject;
     private javax.swing.JComboBox<String> txtterm;
