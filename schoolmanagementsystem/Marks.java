@@ -75,14 +75,12 @@ public class Marks extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtno = new javax.swing.JTextField();
         txtstname = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         txtsubject = new javax.swing.JComboBox<>();
         txtclass = new javax.swing.JComboBox<>();
-        txtgrade = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -94,6 +92,8 @@ public class Marks extends javax.swing.JFrame {
         txtterm = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         txtsection = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        txttotal = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -122,9 +122,6 @@ public class Marks extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 0, 204));
         jLabel5.setText("Subject");
 
-        jLabel6.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel6.setText("Grade");
-
         jLabel7.setForeground(new java.awt.Color(51, 0, 204));
         jLabel7.setText("Term");
 
@@ -134,8 +131,6 @@ public class Marks extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        txtgrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A", "A-", "B", "C", "D", "F" }));
 
         jLabel8.setForeground(new java.awt.Color(51, 0, 204));
         jLabel8.setText("Class Test(20)");
@@ -159,6 +154,9 @@ public class Marks extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(51, 0, 204));
         jLabel12.setText("Section");
 
+        jLabel6.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel6.setText("Total");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,29 +175,6 @@ public class Marks extends javax.swing.JFrame {
                         .addContainerGap(14, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtgrade, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtctmark)
-                                            .addComponent(txtasmark)
-                                            .addComponent(txtatmark)
-                                            .addComponent(txtmark)
-                                            .addComponent(txtsubject, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txtclass, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtstname, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -207,7 +182,26 @@ public class Marks extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtterm, 0, 134, Short.MAX_VALUE)
-                                    .addComponent(txtsection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(txtsection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtctmark)
+                                    .addComponent(txtasmark)
+                                    .addComponent(txtatmark)
+                                    .addComponent(txtmark)
+                                    .addComponent(txtsubject, 0, 134, Short.MAX_VALUE)
+                                    .addComponent(txtclass, 0, 134, Short.MAX_VALUE)
+                                    .addComponent(txtstname, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(txtno, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(txttotal))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -226,7 +220,7 @@ public class Marks extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtclass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtsection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
@@ -257,8 +251,8 @@ public class Marks extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtgrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9))
         );
 
         jButton2.setText("Save");
@@ -385,9 +379,9 @@ public class Marks extends javax.swing.JFrame {
                     v2.add(rs.getString("section"));
                     v2.add(rs.getString("term"));
                     v2.add(rs.getString("subject"));                   
-                    v2.add(rs.getString("mark"));
+                    //v2.add(rs.getString("mark"));
+                    v2.add(rs.getString("totalmark"));
                     v2.add(rs.getString("grade"));
-                    
 
                 }
 
@@ -414,17 +408,21 @@ public class Marks extends javax.swing.JFrame {
                 txtstname.setText("");
                 txtclass.setSelectedIndex(-1);
                 txtsection.setSelectedIndex(-1);
+                
             } else {
                 String name = rs.getString("sname");
                 txtstname.setText(name.trim());
-
+                txtstname.setEnabled(false);
+                
                 String classes = rs.getString("class");
                 txtclass.removeAllItems();
                 txtclass.addItem(classes.trim());
+                txtclass.setEnabled(false);
                 
                 String section = rs.getString("section");
                 txtsection.removeAllItems();
                 txtsection.addItem(section.trim());
+                txtsection.setEnabled(false);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
@@ -434,25 +432,59 @@ public class Marks extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
 
-        d = (DefaultTableModel) jTable1.getModel();
         int selectIndex = jTable1.getSelectedRow();
 
-        String id = d.getValueAt(selectIndex, 0).toString();
+        // Check if a row is selected
+        if (selectIndex != -1) {
+            // Retrieve data from the selected row in the DefaultTableModel
+            String id = d.getValueAt(selectIndex, 0).toString();
+            String studentID = d.getValueAt(selectIndex, 1).toString();
+            String studentName = d.getValueAt(selectIndex, 2).toString();
+            String classes = d.getValueAt(selectIndex, 3).toString();
+            String section = d.getValueAt(selectIndex, 4).toString();
+            String term = d.getValueAt(selectIndex, 5).toString();
+            String subject = d.getValueAt(selectIndex, 6).toString();
+            int totalMark = Integer.parseInt(d.getValueAt(selectIndex, 7).toString());
 
-        txtno.setText(d.getValueAt(selectIndex, 1).toString());
-        txtstname.setText(d.getValueAt(selectIndex, 2).toString());       
-        txtclass.setSelectedItem(d.getValueAt(selectIndex, 3).toString()); 
-        txtsection.setSelectedItem(d.getValueAt(selectIndex, 4).toString());
-        txtterm.setSelectedItem(d.getValueAt(selectIndex, 5).toString());
-        txtsubject.setSelectedItem(d.getValueAt(selectIndex, 6).toString());
-        txtmark.setText(d.getValueAt(selectIndex, 7).toString());
-        txtgrade.setSelectedItem(d.getValueAt(selectIndex, 8).toString());
+            // Set the retrieved data in the respective fields
+            txtno.setText(studentID);
+            txtstname.setText(studentName);
+            txtclass.setSelectedItem(classes);
+            txtsection.setSelectedItem(section);
+            txtterm.setSelectedItem(term);
+            txtsubject.setSelectedItem(subject);
+            txttotal.setText(String.valueOf(totalMark));
+
+            txtno.setEnabled(false);
+            txtstname.setEnabled(false);
+            txtclass.setEnabled(false);
+            txtsection.setEnabled(false);
+            txtterm.setEnabled(false);
+            txtsubject.setEnabled(false);
+                            
+            // Fetch and set the mark value from the database
+            try {
+                pst = con.prepareStatement("SELECT mark FROM marks WHERE id = ?");
+                pst.setString(1, id);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    int mark = rs.getInt("mark");
+                    txtmark.setText(String.valueOf(mark));
+                    
+                    jButton1.setEnabled(false);
+                    jButton2.setEnabled(false);
+                    txttotal.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No mark found for the selected student.");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            } else {
+            JOptionPane.showMessageDialog(this, "Please select a row.");
+        }
         
-
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-
-
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -464,6 +496,17 @@ public class Marks extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
 
+        txtno.setEnabled(true);
+        txtstname.setEnabled(true);
+        txtclass.setEnabled(true);
+        txtsection.setEnabled(true);
+        txtterm.setEnabled(true);
+        txtsubject.setEnabled(true);
+        txtctmark.setEnabled(true);
+        txtasmark.setEnabled(true);
+        txtatmark.setEnabled(true);
+        txttotal.setEnabled(true);
+        
         txtno.setText("");
         txtstname.setText("");
         txtclass.setSelectedIndex(-1);
@@ -474,8 +517,8 @@ public class Marks extends javax.swing.JFrame {
         txtasmark.setText("");
         txtatmark.setText("");
         txtmark.setText("");
-        txtgrade.setSelectedIndex(-1);
-
+        txttotal.setText("");
+                
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -496,31 +539,59 @@ public class Marks extends javax.swing.JFrame {
         String currentMarks = d.getValueAt(selectedRowIndex, 7).toString();
         String newMarks = txtmark.getText();
         
-        String currentGrade = d.getValueAt(selectedRowIndex, 8).toString();
-        String newGrade = txtgrade.getSelectedItem().toString();
         
-        if (newMarks.equals(currentMarks) && newGrade.equals(currentGrade)) {
-            JOptionPane.showMessageDialog(this, "You can only edit the mark and grade field. Other information cannot be changed.");
-            return;
-        }
+        int sum = Integer.parseInt(txtctmark.getText()) + Integer.parseInt(txtasmark.getText()) + Integer.parseInt(txtatmark.getText());
+        int mark = Integer.parseInt(newMarks);
 
+        int totalMark = sum + mark;
         
+        String grade = calculateGrade(totalMark);
+        
+        if (!newMarks.equals(currentMarks)) {
+        // Update the mark in the database
         try {
-            pst = con.prepareStatement("UPDATE marks SET mark = ?, grade = ? WHERE id = ?");
+            pst = con.prepareStatement("UPDATE marks SET mark = ?, totalmark = ?, grade = ? WHERE id = ?");
             pst.setString(1, newMarks);
-            pst.setString(2, newGrade);
-            pst.setString(3, id);
-            
+            pst.setInt(2,totalMark);
+            pst.setString(3, grade);
+            pst.setString(4, id);
+
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Student's Grade Edited successfully!");
+            JOptionPane.showMessageDialog(this, "Student's mark edited successfully!");
 
-            d.setValueAt(newMarks, selectedRowIndex, 7);
-            d.setValueAt(newGrade, selectedRowIndex, 8);
+            // Update the mark in the jTable
+            d.setValueAt(totalMark, selectedRowIndex, 7);
+            d.setValueAt(grade, selectedRowIndex, 8);
 
+            txttotal.setText(String.valueOf(totalMark));
+            
         } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
         }
+        } else {
+            // If the mark is not changed, display a message
+            JOptionPane.showMessageDialog(this, "You can only edit the mark field. Other information cannot be changed.");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private String calculateGrade(int totalMark) {
+    // Define your grading criteria here
+        if (totalMark >= 80) {
+            return "A+";
+        } else if (totalMark >= 70 && totalMark < 80) {
+            return "A";
+        } else if (totalMark >= 60 && totalMark < 70) {
+            return "A-";
+        } else if (totalMark >= 50 && totalMark < 60) {
+            return "B";
+        } else if (totalMark >= 40 && totalMark < 50) {
+            return "C";
+        } else if (totalMark >= 33 && totalMark < 40) {
+            return "C";
+        } else {
+            return "F";
+        }
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -531,21 +602,26 @@ public class Marks extends javax.swing.JFrame {
         String section = txtsection.getSelectedItem().toString();       
         String term = txtterm.getSelectedItem().toString();
         String subject = txtsubject.getSelectedItem().toString();
-        String mark = txtmark.getText();
-        String grade = txtgrade.getSelectedItem().toString();
         
+        int sum = Integer.parseInt(txtctmark.getText()) + Integer.parseInt(txtasmark.getText()) + Integer.parseInt(txtatmark.getText());
+        int mark = Integer.parseInt(txtmark.getText());
+
+        int totalMark = sum + mark;
+        
+        String grade = calculateGrade(totalMark);        
 
         try {
-            pst = con.prepareStatement("insert into marks(sid,name,class,section,term,subject,mark,grade) values(?,?,?,?,?,?,?,?)");
+            pst = con.prepareStatement("insert into marks(sid,name,class,section,term,subject,mark,totalMark,grade) values(?,?,?,?,?,?,?,?,?)");
 
             pst.setString(1, sno);
             pst.setString(2, sname);
             pst.setString(3, classes);
             pst.setString(4, section);
             pst.setString(5, term);
-            pst.setString(6, subject);            
-            pst.setString(7, mark);
-            pst.setString(8, grade);
+            pst.setString(6, subject); 
+            pst.setInt(7,mark);
+            pst.setInt(8, totalMark);
+            pst.setString(9, grade);
             
 
             pst.executeUpdate();
@@ -554,6 +630,10 @@ public class Marks extends javax.swing.JFrame {
             
             Load_Class();
             Load_Section();
+            
+            txtstname.setEnabled(true);
+            txtclass.setEnabled(true);
+            txtsection.setEnabled(true);
             
             txtno.setText("");
             txtstname.setText("");
@@ -565,8 +645,7 @@ public class Marks extends javax.swing.JFrame {
             txtasmark.setText("");
             txtatmark.setText("");
             txtmark.setText("");
-            txtgrade.setSelectedIndex(-1);
-            
+            txttotal.setText("");
 
             Marks_Load();
 
@@ -612,6 +691,10 @@ public class Marks extends javax.swing.JFrame {
                 txtctmark.setText(rs.getString("ctmark"));
                 txtasmark.setText(rs.getString("asmark"));
                 txtatmark.setText(rs.getString("atmark"));
+                
+                txtctmark.setEnabled(false);
+                txtasmark.setEnabled(false);
+                txtatmark.setEnabled(false);
             } else {
                 // Handle case where no assessment marks are found for the selected term and student name
                 txtsubject.setSelectedIndex(-1);
@@ -658,12 +741,22 @@ public class Marks extends javax.swing.JFrame {
             txtasmark.setText("");
             txtatmark.setText("");
             txtmark.setText("");
-            txtgrade.setSelectedIndex(-1);
+            txttotal.setText("");
             
             Marks_Load();
             
             jButton1.setEnabled(true);
             jButton2.setEnabled(true);
+            txtno.setEnabled(true);
+            txtstname.setEnabled(true);
+            txtclass.setEnabled(true);
+            txtsection.setEnabled(true);
+            txtterm.setEnabled(true);
+            txtsubject.setEnabled(true);
+            txtctmark.setEnabled(true);
+            txtasmark.setEnabled(true);
+            txtatmark.setEnabled(true);
+            txttotal.setEnabled(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
@@ -780,12 +873,12 @@ public class Marks extends javax.swing.JFrame {
     private javax.swing.JTextField txtatmark;
     private javax.swing.JComboBox<String> txtclass;
     private javax.swing.JTextField txtctmark;
-    private javax.swing.JComboBox<String> txtgrade;
     private javax.swing.JTextField txtmark;
     private javax.swing.JTextField txtno;
     private javax.swing.JComboBox<String> txtsection;
     private javax.swing.JTextField txtstname;
     private javax.swing.JComboBox<String> txtsubject;
     private javax.swing.JComboBox<String> txtterm;
+    private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
 }
