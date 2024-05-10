@@ -432,14 +432,17 @@ public class Assessment extends javax.swing.JFrame {
             } else {
                 String name = rs.getString("sname");
                 txtsname.setText(name.trim());
-
+                txtsname.setEnabled(false);
+                
                 String classes = rs.getString("class");
                 txtclass.removeAllItems();
                 txtclass.addItem(classes.trim());
+                txtclass.setEnabled(false);
                 
                 String section = rs.getString("section");
                 txtsection.removeAllItems();
                 txtsection.addItem(section.trim());
+                txtsection.setEnabled(false);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Marks.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,6 +481,10 @@ public class Assessment extends javax.swing.JFrame {
 
             Load_Class();
             Load_Section();
+            
+            txtsname.setEnabled(true);
+            txtclass.setEnabled(true);
+            txtsection.setEnabled(true);
             
             txtsid.setText("");
             txtsname.setText("");
@@ -528,6 +535,11 @@ public class Assessment extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
+        txtsname.setEnabled(true);
+        txtclass.setEnabled(true);
+        txtsection.setEnabled(true);
+        
+        
         txtsid.setText("");
         txtsname.setText("");
         txtclass.setSelectedIndex(-1);
@@ -554,7 +566,7 @@ public class Assessment extends javax.swing.JFrame {
         }
         
         String id = d.getValueAt(selectedRowIndex, 0).toString();
-
+//at a time ekbar change 
         
         String classTest = txtctmark.getText();
         String assignment = txtasmark.getText();
